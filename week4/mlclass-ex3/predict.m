@@ -21,12 +21,19 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+ % 5000 * 401
+X = [ones(m, 1) X];
 
+% 5000 * 25
+g_2 = sigmoid(X * Theta1');
 
+% 5000 * 26
+g_2 = [ones(m,1) g_2];
 
+% 5000 * 10
+g_3 = sigmoid(g_2 * Theta2');
 
-
-
+[prediction, p] = max(sigmoid(g_3), [], 2);
 
 
 % =========================================================================
